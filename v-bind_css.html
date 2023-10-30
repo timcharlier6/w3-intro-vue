@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Select images</title>
+    <style>
+        #app {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 80%;
+            border: dashed black 1px;
+        }
+        #app > div {
+            display: block;
+            flex-basis: 80px;
+            aspect-ratio: 1;
+            margin: 5px;
+        }
+        div > img {
+            box-sizing: border-box;
+            width: 100%;
+            padding: 3px;
+            border: solid white 4px;
+            border-radius: 5px;
+        }
+        img:hover {
+            cursor: pointer;
+        }
+        .selClass {
+            border: solid brown 4px;
+            background-color: lightpink;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Example: Selecting images with v-bind:class</h1>
+<p>This is an example of assigning a class with Vue (v-bind:class).</p>
+<p>Click on an image to assign or remove the class "selClass".</p>
+<div id="app">
+    <div v-for="(img, index) in images">
+        <img v-bind:src="img.url" v-on:click="select(index)" v-bind:class="{selClass: img.sel}">
+    </div>
+</div>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                images: [
+                    {url: 'img_burrito.svg', sel: false},
+                    {url: 'img_salad.svg', sel: false},
+                    {url: 'img_cake.svg', sel: false},
+                    {url: 'img_soup.svg', sel: false},
+                    {url: 'img_fish.svg', sel: false},
+                    {url: 'img_pizza.svg', sel: false},
+                    {url: 'img_rice.svg', sel: false}
+                ]
+            }
+        },
+        methods: {
+            select(number) {
+                this.images[number].sel = !this.images[number].sel
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camel case vs kebab case with 'v-bind:style'</title>
+    <style>
+        .impClass {
+            font-weight: bolder;
+        }
+        .yelClass {
+            background-color: rgb(255, 255, 139);
+        }
+        #app > div {
+            border: dashed black 1px;
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Example: Array Syntax with 'v-bind:class'</h1>
+<p>The class 'yelClass' is attached to the div element, and the class 'impClass' is attached if the 'isImportant' property is 'true'</p>
+<div id="app">
+    <div v-bind:class="[{ impClass: isImportant }, 'yelClass' ]">
+        This div tag belongs to one or two classes depending on the isImportant property.
+    </div>
+</div>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                isImportant: true
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+</body>
+</html>

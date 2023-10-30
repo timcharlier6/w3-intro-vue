@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camel case vs kebab case with 'v-bind:style'</title>
+    <style>
+        #app > div {
+            border: dashed black 1px;
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Example: Camel case vs kebab case with 'v-bind:style'</h1>
+<p>Both camel case notation and kebab case notation in quotes can be used for CSS property names with 'v-bind:style', but camel case is recommended.</p>
+<div id="app">
+    <div v-bind:style="{ backgroundColor: 'lightpink', 'font-weight': 'bolder' }">
+        This div tag has pink background and bold text.
+    </div>
+</div>
+
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                isYellow: true,
+                isImportant: true
+            }
+        }
+    })
+    app.mount('#app')
+</script>
+
+</body>
+</html>
